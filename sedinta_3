@@ -48,5 +48,14 @@ foreign key (idAngajat) references angajat(id)
 
 /* alter table angajat add column idDepartament int(2); */
 /* alter table angajat add foreign key (idDepartament) references departament(id); */
-alter table angajat drop foreign key angajat_ibfk_1;
-alter table angajat add angajat_ibfk_1
+
+/*redenumire foregin key din angajat_ibfk_1 in fkPopescu */
+/* alter table angajat drop foreign key angajat_ibfk_1; */
+/* alter table angajat add constraint fkPopescu foreign key (idDepartament) references departament(id);  */
+
+/*redenumire tabele; facem CNP din angajat UNIQUE */
+/* alter table angajat change cnp cnp char(13) not null unique; */
+/*redenumire tabela angajat in angajati */ 
+rename table angajat to angajati;
+
+
