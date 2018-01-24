@@ -5,6 +5,9 @@ id int(2) primary key auto_increment,
 denumire varchar(100) not null
 ); */
 
+/* Creare tabela angajati */
+
+/* 
 create table angajati(
 id int primary key auto_increment, 
 nume varchar(50) not null,
@@ -15,4 +18,35 @@ data_angajarii datetime not null default now(),
 salariul double(5,2),
 poza blob
 );
+*/
 
+/* alter table angajati rename angajat;
+alter table angajat drop varsta; */
+/* alter table angajat add data_nasterii datetime; */
+
+
+/* alter table angajat change data_nasterii  datanasterii datetime;  */
+/* alter table departament change denumire denumire varchar(75) not null; */
+
+/*
+create table proiect (
+codproiect varchar(5) primary key,
+denumire varchar(50),
+durata tinyint
+);
+*/
+/* creare tabela detalii proiect */
+/* 
+create table DetaliiProiect(
+codproiect varchar(5),
+idAngajat int,
+primary key (codproiect, idangajat),
+foreign key (codproiect) references proiect(codproiect),
+foreign key (idAngajat) references angajat(id)
+);
+*/
+
+/* alter table angajat add column idDepartament int(2); */
+/* alter table angajat add foreign key (idDepartament) references departament(id); */
+alter table angajat drop foreign key angajat_ibfk_1;
+alter table angajat add angajat_ibfk_1
