@@ -1,0 +1,18 @@
+/* create database mbanica; 
+use mbanica;
+create table departament(
+id int(2) primary key auto_increment,
+denumire varchar(100) not null
+); */
+
+create table angajati(
+id int primary key auto_increment, 
+nume varchar(50) not null,
+prenume varchar(150) not null,
+varsta tinyint,
+CNP char(13) not null, 
+data_angajarii datetime not null default now(),
+salariul double(5,2),
+poza blob
+);
+
