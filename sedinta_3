@@ -33,19 +33,21 @@ alter table angajat drop varsta;
 /* Adaugare camp data_nasterii in tabela angajat de tip DATETIME */
 alter table angajat add data_nasterii datetime; */
 
+/* Setare tip DATETIME pentru camp data_nasterii din tabela angajat */
+alter table angajat change data_nasterii  datanasterii datetime; 
 
-/* alter table angajat change data_nasterii  datanasterii datetime;  */
-/* alter table departament change denumire denumire varchar(75) not null; */
+/* Setare tip VARCHAR(75) not NULL pentru camp denumire in tabela departament */
+alter table departament change denumire denumire varchar(75) not null; 
 
-/*
+/* Creare tabela PROIECT */
 create table proiect (
 codproiect varchar(5) primary key,
 denumire varchar(50),
 durata tinyint
 );
-*/
-/* creare tabela detalii proiect */
-/* 
+
+/* Creare tabela DetaliiProiect. Creare legatura intre tabela Proiect si Angajat*/
+
 create table DetaliiProiect(
 codproiect varchar(5),
 idAngajat int,
@@ -53,9 +55,10 @@ primary key (codproiect, idangajat),
 foreign key (codproiect) references proiect(codproiect),
 foreign key (idAngajat) references angajat(id)
 );
-*/
 
-/* alter table angajat add column idDepartament int(2); */
+/*Adaugare camp idDepartament de int(2) in tabela angajat */
+alter table angajat add column idDepartament int(2); 
+
 /* alter table angajat add foreign key (idDepartament) references departament(id); */
 
 /*redenumire foregin key din angajat_ibfk_1 in fkPopescu */
@@ -66,3 +69,4 @@ foreign key (idAngajat) references angajat(id)
 /* alter table angajat change cnp cnp char(13) not null unique; */
 /*redenumire tabela angajat in angajati */ 
 rename table angajat to angajati;
+
