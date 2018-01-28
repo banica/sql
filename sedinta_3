@@ -1,20 +1,24 @@
-/* create database mbanica; 
+/* Creare tabela cu numele student */
+create database mbanica; 
+
+/* Comanda de folosire a bazei de date recent creata */
 use mbanica;
+
+/* creare tabela departament */
 create table departament(
 id int(2) primary key auto_increment,
 denumire varchar(100) not null
-); */
+); 
 
 /* Creare tabela angajati */
 
-/* 
 create table angajati(
 id int primary key auto_increment, 
 nume varchar(50) not null,
 prenume varchar(150) not null,
 varsta tinyint,
 CNP char(13) not null, 
-data_angajarii datetime not null default now(),
+data_angajarii datetime not null default now(), /*data actuala a sistemului */
 salariul double(5,2),
 poza blob
 );
@@ -57,5 +61,3 @@ foreign key (idAngajat) references angajat(id)
 /* alter table angajat change cnp cnp char(13) not null unique; */
 /*redenumire tabela angajat in angajati */ 
 rename table angajat to angajati;
-
-
