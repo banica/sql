@@ -1,2 +1,2 @@
 # sql
-SQL
+Teme si cursuri SQL
