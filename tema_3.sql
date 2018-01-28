@@ -41,7 +41,9 @@ use clienti_companie;
 
 DROP TABLE IF EXISTS clienti;
 
-/*2. Scrieţi instrucțiunile pentru crearea tabelelor clienti și facturi. */
+/* 2. Scrieţi instrucțiunile pentru crearea tabelelor clienti și facturi. */
+/* 3. Stabiliți tipurile de dată și dimensiunile pentru fiecare câmp al celor două tabele. */
+
 create table clienti(
 id_client int(10) primary key auto_increment not null, /* id_client */
 nume varchar(20) not null, /* nume client*/ 
@@ -60,14 +62,20 @@ valoare double(10,2), /*valoare factura */
 client_factura varchar(50) /*clientul caruia i-a fost emisă factura */
 );
 
-/* 3. Stabiliți tipurile de dată și dimensiunile pentru fiecare câmp al celor două tabele. */
-
 /* 4. Scrieţi o instrucţiune SQL prin care să modificați numele tabelei facturi în facturi_clienti. */
 alter table facturi rename facturi_clienti;
 
 /* 5. Scrieţi o instrucţiune SQL prin care să reveniți la numele facturi pentru tabela facturi_clienti. */
+
+alter table facturi_clienti rename facturi;
+
 /* 6. Scrieţi o instrucţiune SQL prin care să adăugați o constrângere NOT NULL pe câmpul data_factura din câmpul facturi. */
+
+
 /* 7. Scrieţi o instrucţiune SQL prin care să măriți dimensiunea câmpului nume din tabela clienti. */
+
+alter table clienti change nume nume varchar(40); 
 /* 8.Scrieţi o instrucţiune SQL prin care eliminați constrângerea FOREIGN KEY din tabela facturi. */
 /* 9.Scrieţi o instrucţiune SQL prin care adăugați o constrângere FOREIGN KEY pe  tabela facturi cu numele fk_fact. */
 /* 10. Scrieţi o instrucţiune SQL prin care adăugați valoarea implicită (DEFAULT) 0 pe câmpul valoare din tabela facturi. */ 
+

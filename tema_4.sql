@@ -1,6 +1,6 @@
 /*
 
-TEMA 4
+TEMA SEDINTA 4
 
 Creaţi o bază de date în care să se păstreze evidenţa profesorilor și a cursurilor pe care aceștia le predau. 
 Presupunem că un profesor poate să predea mai multe cursuri, în timp ce un curs poate fi predat de mai mulți profesori. Baza de date se va numi scoala.
