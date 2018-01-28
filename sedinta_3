@@ -22,11 +22,16 @@ data_angajarii datetime not null default now(), /*data actuala a sistemului */
 salariul double(5,2),
 poza blob
 );
-*/
 
-/* alter table angajati rename angajat;
-alter table angajat drop varsta; */
-/* alter table angajat add data_nasterii datetime; */
+
+/* MODIFICARE NUME BAZA DE DATE */
+alter table angajati rename angajat;
+ 
+/* Stergere camp VARSTA din tabela anggajat */
+alter table angajat drop varsta; 
+
+/* Adaugare camp data_nasterii in tabela angajat de tip DATETIME */
+alter table angajat add data_nasterii datetime; */
 
 
 /* alter table angajat change data_nasterii  datanasterii datetime;  */
