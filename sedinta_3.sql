@@ -1,8 +1,13 @@
 /* Creare tabela cu numele student */
-create database mbanica; 
+create database if not exists sedinta_3; 
 
 /* Comanda de folosire a bazei de date recent creata */
-use mbanica;
+use sedinta_3;
+
+DROP TABLE IF EXISTS clienti;
+DROP TABLE IF EXISTS angajati;
+DROP TABLE IF EXISTS proiect;
+DROP TABLE IF EXISTS detaliiproiect;
 
 /* creare tabela departament */
 create table departament(
@@ -31,7 +36,7 @@ alter table angajati rename angajat;
 alter table angajat drop varsta; 
 
 /* Adaugare camp data_nasterii in tabela angajat de tip DATETIME */
-alter table angajat add data_nasterii datetime; */
+alter table angajat add data_nasterii datetime; 
 
 /* Setare tip DATETIME pentru camp data_nasterii din tabela angajat */
 alter table angajat change data_nasterii  datanasterii datetime; 
@@ -69,4 +74,3 @@ alter table angajat add column idDepartament int(2);
 /* alter table angajat change cnp cnp char(13) not null unique; */
 /*redenumire tabela angajat in angajati */ 
 rename table angajat to angajati;
-
