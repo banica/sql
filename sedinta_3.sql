@@ -5,7 +5,6 @@ create database if not exists sedinta_3;
 use sedinta_3;
 
 DROP TABLE IF EXISTS clienti;
-DROP TABLE IF EXISTS angajati;
 DROP TABLE IF EXISTS proiect;
 DROP TABLE IF EXISTS detaliiproiect;
 
@@ -15,6 +14,7 @@ id int(2) primary key auto_increment,
 denumire varchar(100) not null
 ); 
 
+DROP TABLE IF EXISTS angajati;
 /* Creare tabela angajati */
 
 create table angajati(
@@ -64,13 +64,13 @@ foreign key (idAngajat) references angajat(id)
 /*Adaugare camp idDepartament de int(2) in tabela angajat */
 alter table angajat add column idDepartament int(2); 
 
-/* alter table angajat add foreign key (idDepartament) references departament(id); */
+alter table angajat add foreign key (idDepartament) references departament(id); 
 
 /*redenumire foregin key din angajat_ibfk_1 in fkPopescu */
-/* alter table angajat drop foreign key angajat_ibfk_1; */
-/* alter table angajat add constraint fkPopescu foreign key (idDepartament) references departament(id);  */
+alter table angajat drop foreign key angajat_ibfk_1; 
+alter table angajat add constraint fkPopescu foreign key (idDepartament) references departament(id);  
 
 /*redenumire tabele; facem CNP din angajat UNIQUE */
-/* alter table angajat change cnp cnp char(13) not null unique; */
-/*redenumire tabela angajat in angajati */ 
+ alter table angajat change cnp cnp char(13) not null unique;
+/* redenumire tabela angajat in angajati */
 rename table angajat to angajati;

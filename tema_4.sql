@@ -59,12 +59,12 @@ durata  tinyint/* durată (număr de lecții). */
 );
 
 /* 4)  Introduceți înregistrări în tabele (minim 5 înregistrări în fiecare tabelă). Utilizați mai multe variante ale instrucțiunii INSERT. */
-insert  into profesori(id_profesor,nume,prenume,localitate,data_angajarii, salariu) values 
+insert  into profesori(id_profesor,nume,prenume,localitate,data_angajarii,salariu) values 
 ('1','Anghel','Sorin','Arad','2018-01-01','1500.05'),
-('2','Banica','Marian','Arges','2018-01-02','2001,04'),
+/* ('2','Banica','Marian','Arges','2018-01-02','2001,04'),
 ('3','Baltaretu','Alexandra','2018-01-03','100,40'),
 ('4','Barbulescu','Elena','Brasov','2018-01-04','500,97'),
 ('5','Buzea','Mihai','Craiova', '2017-07-07','600,57'),
 ('6','Coaca','Ionut','Craiova','2016-02-03','400,87'),
 ('7','Geamanu','Oana','Dambovita','2010-01-10','588,10'),
-('8','Ilie','Leonard','Iasi','2019-02-03','10023,45')
+('8','Ilie','Leonard','Iasi','2019-02-03','10023,45') */
