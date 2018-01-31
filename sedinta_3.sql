@@ -1,76 +1,54 @@
-/* Creare tabela cu numele student */
-create database if not exists sedinta_3; 
-
-/* Comanda de folosire a bazei de date recent creata */
 use sedinta_3;
-
-DROP TABLE IF EXISTS clienti;
-DROP TABLE IF EXISTS proiect;
-DROP TABLE IF EXISTS detaliiproiect;
-
-/* creare tabela departament */
-create table departament(
-id int(2) primary key auto_increment,
-denumire varchar(100) not null
-); 
-
-DROP TABLE IF EXISTS angajati;
-/* Creare tabela angajati */
-
-create table angajati(
-id int primary key auto_increment, 
-nume varchar(50) not null,
-prenume varchar(150) not null,
-varsta tinyint,
-CNP char(13) not null, 
-data_angajarii datetime not null default now(), /*data actuala a sistemului */
-salariul double(5,2),
-poza blob
-);
+/* insert into departament (id, denumire)
+values (null, 'HR'); */
+/* insert into departament (denumire) values ('IT'); */
 
 
-/* MODIFICARE NUME BAZA DE DATE */
-alter table angajati rename angajat;
- 
-/* Stergere camp VARSTA din tabela angajat */
-alter table angajat drop varsta; 
+/* insert into angajati (nume, prenume, cnp, salariul, iddepartament) values 
+('Popescu', 'Mihai', 1234567891012, '274.00', 1); 
+/* SELECT * FROM DEPARTAMENT; */
 
-/* Adaugare camp data_nasterii in tabela angajat de tip DATETIME */
-alter table angajat add data_nasterii datetime; 
+/* insert into Proiect set codproiect = 'P10', denumire = 'Testare', durata = 3;
 
-/* Setare tip DATETIME pentru camp data_nasterii din tabela angajat */
-alter table angajat change data_nasterii  datanasterii datetime; 
+select * from proiect;
 
-/* Setare tip VARCHAR(75) not NULL pentru camp denumire in tabela departament */
-alter table departament change denumire denumire varchar(75) not null; 
+INSERT INTO proiect (codproiect, denumire, durata)
+values
+('P50','Validare', 10),
+('P70', 'implementare', 10),
+('P11', 'retestare' , 10)
 
-/* Creare tabela PROIECT */
-create table proiect (
-codproiect varchar(5) primary key,
-denumire varchar(50),
-durata tinyint
-);
+update proiect set denumire = 'VALIDARE' where codproiect = 'P50';
+update proiect set codproiect = 'P1' where codproiect = 'P11'; */
+/* update angajati set salariul = salariul * 1.10;
 
-/* Creare tabela DetaliiProiect. Creare legatura intre tabela Proiect si Angajat*/
+delete from departament where id = 3; */
 
-create table DetaliiProiect(
-codproiect varchar(5),
-idAngajat int,
-primary key (codproiect, idangajat),
-foreign key (codproiect) references proiect(codproiect),
-foreign key (idAngajat) references angajat(id)
-);
+/* insert into departament (denumire) values ('IT'); */
+/* STERGE TOATE DATELE DIN TABELA SI RESETEAZA AUTO-INCREMENT 
+TRUNCATE TABLE angajati; */
+/*
+SELECT nume, prenume from angajati where prenume LIKE 'M%'; /*afiseaza doar nume si prenume*/ 
+/* select nume, prenume, salariul from angajati where nume='Popescu'; */
+/* select nume, prenume from angajati where salariul between 1 and 5;
 
-/*Adaugare camp idDepartament de int(2) in tabela angajat */
-alter table angajat add column idDepartament int(2); 
+select * from angajati where prenume = 'Mihai' and salariul > 1; */
+select * from angajati where data_angajarii between '2018-01-01' and '2018-12-31';
+use sedinta_3;
+insert into angajati (nume, prenume, cnp, salariul, iddepartament) values ('Ion', 'Ionescu', 1234567891013, '275.00', 1); 
+insert into angajati (nume, prenume, cnp, salariul, iddepartament) values ('Ion', 'Popescu', 1234567891023, '75.00', 1); 
+insert into angajati (nume, prenume, cnp, salariul, iddepartament) values ('Aurel', 'Ilie', 1234567891014, '285.00', 1); 
+SELECT idDepartament, COUNT(nume), SUM(salariul) from angajati group by idDepartament; /* group by se face de obicei, nu mereu dupa cheie primara */
 
-alter table angajat add foreign key (idDepartament) references departament(id); 
+SELECT nume, count(nume) from angajati group by nume;
+/* Salariul mediu mai mare decat o valoare ... */
+SELECT idDepartament, AVG(salariul) AS SalariuMediu from angajati group by idDepartament having AVG(salariul) > 100 ORDER BY SalariuMediu DESC;
+/*LIMIT 5 Limiteaza la 5 randuri */
 
-/*redenumire foregin key din angajat_ibfk_1 in fkPopescu */
-alter table angajat drop foreign key angajat_ibfk_1; 
-alter table angajat add constraint fkPopescu foreign key (idDepartament) references departament(id);  
+SELECT DISTINCT nume, prenume from angajati;  /*DISTINCT ELIMINA DUPLICATE doar ca afisare */
 
-/*redenumire tabele; facem CNP din angajat UNIQUE */
- alter table angajat change cnp cnp char(13) not null unique;
-/* redenumire tabela angajat in angajati */
-rename table angajat to angajati;
+use sedinta_3;
+UPDATE proiect SET durata = durata + 2 where durata < 100 ;
+SELECT durata, durata+2 from proiect where durata <100 ;
+
+SELECT nume, prenume, data_angajarii from angajati where idDepartament = 1 order by data_angajarii; 
