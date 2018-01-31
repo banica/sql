@@ -1,0 +1,22 @@
+use sedinta_3;
+/* insert into departament (id, denumire)
+values (null, 'HR'); */
+/* insert into departament (denumire) values ('IT'); */
+
+
+/* insert into angajati (nume, prenume, cnp, salariul, iddepartament) values 
+('Popescu', 'Mihai', 1234567891012, '274.00', 1); 
+/* SELECT * FROM DEPARTAMENT; */
+
+/* insert into Proiect set codproiect = 'P10', denumire = 'Testare', durata = 3;
+
+select * from proiect;
+
+INSERT INTO proiect (codproiect, denumire, durata)
+values
+('P50','Validare', 10),
+('P70', 'implementare', 10),
+('P11', 'retestare' , 10)
+
+update proiect set denumire = 'VALIDARE' where codproiect = 'P50';
+update proiect set codproiect = 'P1' where codproiect = 'P11'; */
