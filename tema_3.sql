@@ -60,7 +60,7 @@ id_factura int(10) primary key auto_increment not null, /* id_factura */
 data_factura datetime not null default now(), /* data factura */
 valoare double(10,2), /*valoare factura */
 id_client int(10), FOREIGN KEY (id_client) REFERENCES clienti(id_client) /*clientul caruia i-a fost emisă factura */
-);
+); 
 
 /* 4. Scrieţi o instrucţiune SQL prin care să modificați numele tabelei facturi în facturi_clienti. */
 alter table facturi rename facturi_clienti;
