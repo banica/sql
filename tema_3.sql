@@ -59,7 +59,7 @@ create table facturi(
 id_factura int(10) primary key auto_increment not null, /* id_factura */
 data_factura datetime not null default now(), /* data factura */
 valoare double(10,2), /*valoare factura */
-client_factura varchar(50) /*clientul caruia i-a fost emisă factura */
+idclient foreign key CLIENT (idclient) /*clientul caruia i-a fost emisă factura */
 );
 
 /* 4. Scrieţi o instrucţiune SQL prin care să modificați numele tabelei facturi în facturi_clienti. */
