@@ -1,0 +1,64 @@
+a) SELECT b.Name, COUNT(a.ID) AS "Numar orase"
+	FROM city a RIGHT JOIN country b
+	ON a.CountryCode = b.Code
+	GROUP BY b.Name
+	ORDER BY COUNT(a.ID) DESC;
+	
+
+b) SELECT a.Name, a.Continent,
+		b.`Language`, b.IsOfficial
+	FROM country a, countrylanguage b
+	WHERE a.Code = b.CountryCode
+	AND a.Continent = 'Africa'
+	AND b.IsOfficial = 'T'
+	ORDER BY a.Name;
+
+a ) 
+SELECT e.FIRST_NAME, e.LAST_NAME,
+	c.CITY, b.COUNTRY_NAME, a.REGION_NAME
+	FROM regions a, countries b, 
+		locations c, departments d, employees e
+	WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+	AND d.LOCATION_ID = c.LOCATION_ID
+	AND c.COUNTRY_ID = b.COUNTRY_ID
+	AND b.REGION_ID = a.REGION_ID
+	AND a.REGION_NAME LIKE 'America%';
+
+b)  SELECT d.COUNTRY_NAME, SUM(a.SALARY) AS
+	"Total salarii"
+	FROM employees a, departments b,
+	locations c, countries d
+	WHERE a.DEPARTMENT_ID = b.DEPARTMENT_ID
+	AND b.LOCATION_ID = c.LOCATION_ID
+	AND c.COUNTRY_ID = d.COUNTRY_ID
+	GROUP BY d.COUNTRY_NAME
+	ORDER BY SUM(a.SALARY) DESC;
+
+c ) SELECT DISTINCT a.DEPARTMENT_NAME, c.JOB_TITLE
+	FROM departments a
+	JOIN employees b
+	ON a.DEPARTMENT_ID = b.DEPARTMENT_ID
+	JOIN jobs c
+	ON c.JOB_ID = b.JOB_ID
+	WHERE a.DEPARTMENT_NAME LIKE '%IT%'
+	OR a.DEPARTMENT_NAME LIKE '%Sales%'	
+
+a) SELECT a.customerName, b.orderNumber
+	FROM customers a
+	LEFT JOIN orders b
+	ON a.customerNumber = b.customerNumber
+	WHERE b.orderNumber IS NULL;
+
+b) SELECT a.lastName, a.firstName, a.jobTitle,
+	b.customerNumber AS "Nume client"
+	FROM employees a LEFT JOIN
+	customers b
+	ON a.employeeNumber = b.salesRepEmployeeNumber
+	WHERE b.customerNumber IS NULL
+UNION	
+SELECT a.lastName, a.firstName, a.jobTitle,
+	b.customerName
+	FROM employees a RIGHT JOIN
+	customers b
+	ON a.employeeNumber = b.salesRepEmployeeNumber
+	WHERE a.employeeNumber IS NULL;
