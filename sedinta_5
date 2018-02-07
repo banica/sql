@@ -1,4 +1,4 @@
- use world;
+use world;
 /*tari din Africa cu populatie > 100.000 */
 select name, Continent, Population from country where Continent like '%Africa%' and population > 1000000;
 /* selectarea tuturor oraselor care incep cu litera D */
@@ -9,3 +9,25 @@ use classicmodels;
 select customerName, country from customers where country not in ('France', 'Italy', 'Spain');
 /*produsele Ford care au cantitatea in stoc < 1000 */
 select productName, quantityInStock from products where productName like '%Ford%' and quantityInStock <1000;
+
+select truncate (1.2841, 1);
+select round (1.2841, 1);
+select 13%5, MOD(13,5) as rest;
+
+select if (13/0=0, 'Incorect', 'corect');
+select if (14%2=0, 'Corect', 'Incorect');
+
+use world;
+select if(Population < 1000000, 'tari mici', name) as tari from country order by tari;
+select ifnull(capital, 'fara valoare') from country; 
+
+/*cele mai putin populate 5 tari*/
+select * from country where continent like ('Europe') order by population ASC limit 5;
+select * from country order by population ASC limit 5;
+
+use classicmodels;
+select concat(contactFirstName, ' ', contactFirstName) as CustomerName  from customers;
+
+/*concat_ws pune un caracter intre campuri */
+select concat_ws(' ', contactFirstName, contactLastName);
+
