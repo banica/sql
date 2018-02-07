@@ -1,0 +1,11 @@
+ use world;
+/*tari din Africa cu populatie > 100.000 */
+select name, Continent, Population from country where Continent like '%Africa%' and population > 1000000;
+/* selectarea tuturor oraselor care incep cu litera D */
+select name, population from city where name like 'D%' and population between 100000 and 500000;
+
+use classicmodels;
+/*clientii din Italia, Franta si Spania */
+select customerName, country from customers where country not in ('France', 'Italy', 'Spain');
+/*produsele Ford care au cantitatea in stoc < 1000 */
+select productName, quantityInStock from products where productName like '%Ford%' and quantityInStock <1000;
