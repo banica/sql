@@ -48,3 +48,5 @@ inner join orders as o on c.customernumber=o.customernumber
 inner join orderdetails as od on od.ordernumber=o.ordernumber
 inner join products as p on od.productcode=p.productcode
 where p.productname like '%Ford%';
+
+/*rezultatul unui SELECT este o tabela*  adica poate fi folosit ca un FROM */
