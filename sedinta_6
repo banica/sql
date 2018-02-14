@@ -31,3 +31,20 @@ on c.customernumber=o.customernumber where year(orderDate)=2004 and status = 'Ca
 
 /*clinetii fara comenzi */
 select c.customernumber, c.customername from customers as c left join orders as o on c.customernumber=o.customernumber where o.customernumber is null;
+
+/*stocul total al produselor ford si al produselor Mercedes */
+select sum(quantityInStock) as 'StocTotal', 'Ford' as Prod from products where productname like '%FORD%'
+union select sum(quantityInStock), 'Mercedes' from products where productname like '%MERCEDES%';
+
+/*clientii din Paris si angajatii care au biroul in Paris nume, prenume */
+
+select c.contactFirstName, c.contactLastName, 'Clienti' from customers as c where c.city like '%Paris%'
+union select e.firstName, e.lastName, 'Angajati' from employees as e inner join offices as o on e.officecode=o.officecode where o.city like '%Paris%';
+
+/* clientii care au comandat produse Ford afisare NumeClient, Data Comenzii, Produsul */
+select c.customerName, o.orderdate, p.productname 
+from customers as c 
+inner join orders as o on c.customernumber=o.customernumber 
+inner join orderdetails as od on od.ordernumber=o.ordernumber
+inner join products as p on od.productcode=p.productcode
+where p.productname like '%Ford%';
