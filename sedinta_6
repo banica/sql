@@ -1,0 +1,33 @@
+use classicmodels;
+
+select c.customerNumber, c.customerName, o.orderNumber from customers as C, orders as o;
+select c.customerName, c.country, c.city, o.customernumber from customers as c inner join orders o on c.customernumber=o.customerNumber;
+
+select orders.customerNumber from customers join orders on customers.customerNumber=orders.customerNumber;
+
+/* Outer join */
+/* toti clientii si numarul de comanda a fiecarui client */
+/* se recomanda ca prima tabela sa aiba cat mai putine inregistrari */
+select c.customerName, o.orderNumber from customers as c  left join orders as o on c.customerNumber= o.customerNumber;
+
+/* Right join */
+select c.customerName, o.orderNumber from orders as o right join customers as c on o.customernumber=c.customernumber;
+
+/*Angajatii si managerii lor nume angajat, nume manager */
+select concat(ang.lastname, ' ', ang.firstName) as NumeAngajat, Concat(mng.LastName, ' ', mng.firstName) as manager 
+from employees as ang 
+join employees  mng
+on ang.reportsto = mng.employeenumber;
+
+/* angajatii care lucreaza la birouri din USA nume prenume angajat si tara birou */
+select e.lastname, e.firstname, o.country from employees as e inner join offices o
+on e.officecode=o.officecode where o.country like 'U%S%A';
+
+/* clientii care au avut comenzi anulate in 2004, numar client, nume client, numar comanda, an comanda, status */
+select c.customerNumber, c.customerName, o.orderNumber, year(orderDate),status, year(orderdate) 
+from customers as c 
+inner join orders o 
+on c.customernumber=o.customernumber where year(orderDate)=2004 and status = 'Cancelled';
+
+/*clinetii fara comenzi */
+select c.customernumber, c.customername from customers as c left join orders as o on c.customernumber=o.customernumber where o.customernumber is null;
