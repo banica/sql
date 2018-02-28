@@ -38,3 +38,14 @@ select c.name , c.continent
 from country c
 inner join city i on c. capital = i.id where continent like '%North%';
 select * from tmp_capitale;
+
+/* index pe campul phone din tabela customers */
+use classicmodels;
+`PRIMARY`create index idx_phone on customers(phone);
+
+show index from customers;
+drop index idx_phone on customers;
+
+/*pot sa pun INDEX pe o parte din valorile de la o coloana... ex: primele 5 caractere din customerName */
+create index idx_5char on customers(customername(5));
+SELECT * FROM customers wgere substring (phone, 2,5) = 10; 
