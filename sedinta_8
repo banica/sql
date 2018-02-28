@@ -1,0 +1,40 @@
+use classimodels;
+/* creare view cu clientii din Germania, Italia si Spania */
+create view vw_clienti as
+select * from customers where country in ('Spain','Germany', 'Italy');
+select * from vw_clienti;
+
+insert into customers (customerNumber, customerName,contactLastName, contactFirstName, Country, City, Phone, addressLine1) values (1999,'CustomerTest', 'Test', 'Test', 'Spain', 'Madrid', '245', 'Strada');
+select * from vw_clienti where customerNumber = 1999;
+
+insert into vw_clienti (customerNumber, customerName,contactLastName, contactFirstName, Country, City, Phone, addressLine1) values (1998,'CustomerTest', 'Test', 'Test', 'Spain', 'Madrid', '245', 'Strada');
+select * from vw_clienti where customerNumber = 1998;
+
+update vw_clienti set country = 'Romania', city = 'Bucharest' where customerNumber = 1999;
+select * from vw_clienti where customerNumber = 1999;
+
+delete from vw_clienti where customerNumber in ('1998', '1999');
+
+/* creare view cu nr. de comenzi neanulate din fiecare an */
+create view vw_nrComenzi as
+select year(OrderDate), count(orderNumber) as 'NumarComenzi'
+from orders where status != 'Cancelled' group by year(orderDate);
+select * from vw_nrcomenzi;
+
+select * from customers;
+insert into orders(orderNumber, orderDate, requiredDate, status, customerNumber) values (21, now(), now(), 'Shipped', 112);
+/*nu este actualizabil -> eroare*/ /* nu este actualizabil pentru ca are GROUP by*/
+insert into vw_nrcomenzi values (2003,4);
+
+alter view vw_clienti as select * from customers where country = 'France';
+drop view vw_clienti; 
+drop view vw_nrcomenzi;
+
+/* tabela temporara care contine capitalele tarilor din America de Nord */
+use world;
+
+create temporary table tmp_capitale as 
+select c.name , c.continent
+from country c
+inner join city i on c. capital = i.id where continent like '%North%';
+select * from tmp_capitale;
