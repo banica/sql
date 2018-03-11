@@ -1,0 +1,76 @@
+DROP DATABASE IF EXISTS proiect_final;
+CREATE DATABASE IF NOT EXISTS proiect_final;
+use proiect_final;
+	 
+-- furnizor
+DROP TABLE IF EXISTS furnizor;
+CREATE TABLE furnizor (
+    id_furnizor INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_furnizor INT(10),
+    denumire TEXT(50),
+    cod_fiscal TEXT(7),
+    adresa TEXT(50),
+    telefon TEXT(10),
+    cod_iban TEXT(10),
+    banca TEXT(24)
+);
+
+-- factura
+DROP table if exists factura;
+CREATE TABLE factura (
+    id_factura INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    serie_factura TEXT(5),
+    nr_factura INT(10),
+    data_factura DATETIME,
+    VAT INT(10),
+    achitat BIT,
+    nr_aviz INT(10)
+);
+
+-- produs
+DROP table if exists produs;
+CREATE TABLE produs (
+    cod_produs TEXT(50),
+    denumire_produs TEXT(50),
+    unitate_masura TEXT(50)
+);
+
+-- client
+DROP TABLE if exists clienti;
+CREATE TABLE clienti (
+    id_client INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_client INT(10),
+    nume_client TEXT(50),
+    prenume_client TEXT(50),
+    adresa_client TEXT(50),
+    telefon TEXT(10),
+    banca TEXT(50)
+);
+
+-- intrari_produse (spargem N:M dintre factura si produse)
+drop table if exists intrari_produse;
+CREATE TABLE intrari_produse (
+    id_intrare INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id_factura INT(10),
+    denumire_factura TEXT(50),
+    cantitate INT(10),
+    pret_unitar INT(50),
+    adaos INT(50)
+);
+
+
+
+
+-- 1. Realizați 5 operații de modificare a structurii tabelelor după ce acestea au fost create (schimbarea numelui unei tabele, revenirea la numele inițial - instrucțiuni diferite, adăugați un câmp suplimentar într-o tabelă, ștergeți un câmp dintr-o tabelă, modificați un câmp al unei tabele (de ex. mărim dimensiunea lui), adăugați câteva constrângeri pe câteva câmpuri ale unor tabele (de ex. valoare implicită, să nu permită valori nule, foreign key, etc.). 
+
+-- 2. Introduceți date în toate tabele bazei de date utilizând instrucțiuni ale LMD. Tabela de produse să conțină minim 30 de înregistrări, tabelele de clienți, facturi și comenzi minim 10 înregistrări.
+-- 3. Realizați 2 instrucțiuni de modificare (update) a anumitor înregistrări pe două tabele diferite (de exemplu, creșteți prețul produselor dintr-o anumită categorie cu 10%, schimbați adresa unui furnizor sau client.
+-- 4. Implementați 2 instrucțiuni de ștergere de înregistrări din tabelele bazei de date (de exemplu o anumită factură, un produs dintr-o anumită categorie, etc.).
+-- 5. Implementați 5 interogări simple pe tabelele bazei de date (de exemplu: afișarea produselor dintr-o anumită categorie, afișarea clienților dintr-o anumită localitate, afișarea produsului (produselor) cel mai scump, respectiv cel mai ieftin, afișarea facturilor dintr-un anumit interval de timp, valoarea totală a produselor dintr-o categorie, valoarea unui produs dintr-o categorie(cantitate*preț), etc.).
+-- 6. Implementați 5 interogări utilizând operatori și funcții MySQL (de ex: alipiți anumite câmpuri de tip șir de caractere, calculați media prețului produselor dintr-o anumită categorie, afișați valoarea facturilor sau prețul produselor rotunjit la un anumit număr de zecimale, afișați facturile sau comenzile dintr-o anumită lună sau dintr-un anumit an, etc.).
+-- 7. Implementați 5 interorgări complexe pe tabelele bazei de date utilizând join-uri și reuniuni (de exemplu: numele clienților și adresa precum și facturile emise acestora într-un interval de timp, numele categoriei și produsele din această categorie, clienții care au comandat un anumit produs, facturile furnizorilor dintr-o anumită localitate, numărul de produse din fiecare categorie, furnizorii și clienții dintr-o anumită localitate, etc.).
+-- 8. Implementați 3 subinterogări pe baza tabelelelor din baza de date (de exemplu: produsul cu cea mai mare valoare comandat în luna curentă, furnizorii produselor comandate într-un anumit an, produsele comandate în ordinea descrecătoare a valorii, etc.).
+-- 9. Implementați 3 tabele virtuale pe baza anumitor selecții (fie interogări realizate anterior, fie altele noi, cum ar fi view cu toți clienții din București, view cu toate facturile din luna curentă, view cu ultimele 5 facturi emise, view cu ultimele 3 produse adăgate, etc.). Afișați datele din view.
+-- 10. Inserați date într-un view. Modificați și ștergeți date într-o tabelă pe baza căreia ați implementat un view. Afișați datele din view.
+-- 11. Creați o tabelă temporară care să conțină informații extrase din alte tabele.
+-- 12. Implementați o tranzacție și creați 2 indecși simpli și unul de unicitate, pe coloane care se pretează la indexare din tabelele bazei de date.
