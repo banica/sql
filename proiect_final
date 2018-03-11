@@ -13,7 +13,12 @@ CREATE TABLE produs (
 -- categorie
 drop table if exists categorie;
 create table categorie (
-id_categorie int(10) primary key auto_increment not null);
+id_categorie int(10) primary key auto_increment not null,
+id_categorie_parinte text(50),
+nume_categorie text(50),
+id_produs text(50),
+subcategorie bit
+);
 
 -- client
 DROP TABLE if exists clienti;
