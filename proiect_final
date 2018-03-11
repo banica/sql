@@ -1,6 +1,31 @@
 DROP DATABASE IF EXISTS proiect_final;
 CREATE DATABASE IF NOT EXISTS proiect_final;
 use proiect_final;
+
+-- produs
+DROP table if exists produs;
+CREATE TABLE produs (
+    cod_produs TEXT(50),
+    denumire_produs TEXT(50),
+    unitate_masura TEXT(50)
+);
+
+-- categorie
+drop table if exists categorie;
+create table categorie (
+id_categorie int(10) primary key auto_increment not null);
+
+-- client
+DROP TABLE if exists clienti;
+CREATE TABLE clienti (
+    id_client INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_client INT(10),
+    nume_client TEXT(50),
+    prenume_client TEXT(50),
+    adresa_client TEXT(50),
+    telefon TEXT(10),
+    banca TEXT(50)
+);
 	 
 -- furnizor
 DROP TABLE IF EXISTS furnizor;
@@ -27,25 +52,11 @@ CREATE TABLE factura (
     nr_aviz INT(10)
 );
 
--- produs
-DROP table if exists produs;
-CREATE TABLE produs (
-    cod_produs TEXT(50),
-    denumire_produs TEXT(50),
-    unitate_masura TEXT(50)
-);
+drop table if exists comanda;
+create table comanda(
+id_comanda int(10) primary key auto_increment not null);
 
--- client
-DROP TABLE if exists clienti;
-CREATE TABLE clienti (
-    id_client INT(10) PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    cod_client INT(10),
-    nume_client TEXT(50),
-    prenume_client TEXT(50),
-    adresa_client TEXT(50),
-    telefon TEXT(10),
-    banca TEXT(50)
-);
+
 
 -- intrari_produse (spargem N:M dintre factura si produse)
 drop table if exists intrari_produse;
@@ -57,8 +68,6 @@ CREATE TABLE intrari_produse (
     pret_unitar INT(50),
     adaos INT(50)
 );
-
-
 
 
 -- 1. Realizați 5 operații de modificare a structurii tabelelor după ce acestea au fost create (schimbarea numelui unei tabele, revenirea la numele inițial - instrucțiuni diferite, adăugați un câmp suplimentar într-o tabelă, ștergeți un câmp dintr-o tabelă, modificați un câmp al unei tabele (de ex. mărim dimensiunea lui), adăugați câteva constrângeri pe câteva câmpuri ale unor tabele (de ex. valoare implicită, să nu permită valori nule, foreign key, etc.). 
