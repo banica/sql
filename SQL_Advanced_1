@@ -22,3 +22,24 @@
 22 - C nu exista RENAME
 
 TRUNCATE vs DELETE (EXE SOFTWARE) 
+
+
+
+select * from sizes JOIN colors;
+
+select a.doctor_name, b.id_programare from doctori a join programari b using (doctor_id);
+select a.doctor_name, b.id_programare from doctori a, programari b where a.doctor_id = b.doctor_id;
+
+select a.doctor_name, b.id_programare FROM doctori a LEFT JOIN programari b  using(doctor_id);
+
+select a.doctor_name, b.id_programare FROM doctori a LEFT JOIN programari b where b.doctori_id is null;
+ use world;
+ 
+ select a.name, count(b.name) from country a join city b on a.code=b.countrycode group by count(b.name) DESC;
+ 
+ /* selectati numele angajatului si numele managerului acestuia ( daca acesta nu are manager sa se afiseze 'Top Manager'); */
+
+select * from employees;
+select concat(a.first_name, a.last_name) AS 'nume_angajat', CONCAT(b.first_name, b.last_name) AS 'nume_angajat' from employees a join employees b on a.employee_id=b.manager_ID; 
+
+
